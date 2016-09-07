@@ -75,7 +75,7 @@
                                 {% for cate in catess %}
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
+                                            <a data-toggle="collapse" data-parent="#accordian" href="{{ url('categoryproduct',{'id':cate.id}) }}">
                                                 {{ cate.name }}
                                             </a>
                                         </h4>
