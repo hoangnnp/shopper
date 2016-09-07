@@ -56,11 +56,6 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <div class="search_box pull-right">
-                        <input type="text" placeholder="Search"/>
-                    </div>
-                </div>
             </div>
         </div>
     </div><!--/header-bottom-->
@@ -75,9 +70,7 @@
                                 {% for cate in catess %}
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordian" href="{{ url('categoryproduct',{'id':cate.id}) }}">
-                                                {{ cate.name }}
-                                            </a>
+                                            <a href="{{ url('categoryproduct',{'id':cate.id}) }}">{{ cate.name }}</a>
                                         </h4>
                                     </div>
                                 {% endfor %}
