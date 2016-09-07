@@ -32,6 +32,7 @@ class CategoryController extends Controller
 
         $cat = $repository->find($id);
         $res_array['cat'] =$cat;
+        $res_array['title'] = "Category";
         return $this->render('default/categoryproduct.html.twig',$res_array);
     }
 }

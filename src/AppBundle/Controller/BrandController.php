@@ -36,6 +36,7 @@ class BrandController extends Controller
         $repository = $this->getDoctrine()->getRepository('AppBundle:Product');
         $featuredProducts =  $repository->findBy(array('isFeatured'=>true));
         $res_array['featuredProducts'] = $featuredProducts;
+        $res_array['title'] = "Brand";
 
         return $this->render('default/brandProduct.html.twig',$res_array);
     }

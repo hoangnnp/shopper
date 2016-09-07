@@ -39,6 +39,7 @@ class CartController extends Controller
         $user=$repositoryUser->find($user_id);
         $bill = $repository->findOneBy(array('user'=>$user,'orderstate'=>'Pending'));//chỉ lấy order đang pending
         $res_array['bill'] = $bill;
+        $res_array['title'] = "Cart";
 
         return $this->render('default/cart.html.twig',$res_array);
     }

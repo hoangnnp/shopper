@@ -33,6 +33,7 @@ class ProfileController extends Controller
         $repository = $this->getDoctrine()->getRepository('AppBundle:User');
         $user = $repository->find($session->get('id'));
         $res_array['user'] = $user;
+        $res_array['title'] = "Profile";
 
         return $this->render('default/profile.html.twig',$res_array);
     }

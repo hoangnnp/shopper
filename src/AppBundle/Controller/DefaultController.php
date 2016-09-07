@@ -35,6 +35,7 @@ class DefaultController extends Controller
 
         $detailp = $em->find('AppBundle:Product',$id);
         $res_array['product']=$detailp;
+        $res_array['title'] = "Product Detail";
 
         return $this->render('default/detailProduct.html.twig',$res_array);
     }
@@ -65,6 +66,7 @@ class DefaultController extends Controller
         $featuredProducts =  $repository->findBy(array('isFeatured'=>true));
         $res_array['featuredProducts'] = $featuredProducts;
 
+        $res_array['title'] = "Home";
         return $this->render('default/index.html.twig',$res_array);
     }
 
@@ -128,6 +130,7 @@ class DefaultController extends Controller
         $repository = $this ->getDoctrine() ->getRepository('AppBundle:Brand');
         $brands = $repository ->findAll();
         $res_array['brands']=$brands;
+        $res_array['title'] = "Login";
 
         return $this->render('default/login.html.twig', $res_array);
     }

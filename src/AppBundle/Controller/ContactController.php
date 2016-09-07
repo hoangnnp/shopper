@@ -43,6 +43,7 @@ class ContactController extends Controller
         $repository = $this->getDoctrine()->getRepository('AppBundle:Brand');
         $brands = $repository->findAll();
         $res_array['brands'] = $brands;
+        $res_array['title'] = "Contact";
         return $this->render('default/contact.html.twig',$res_array);
     }
 
