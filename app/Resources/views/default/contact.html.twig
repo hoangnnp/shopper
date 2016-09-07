@@ -1,0 +1,67 @@
+{% extends 'default/layout.html.twig' %}
+{% block content %}
+    <div class="header-middle"><!--header-middle-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="logo pull-left">
+                        <a href="{{ url('homepage') }}"><img src="{{ asset('images/home/logo.png') }}" alt="" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/header-middle-->
+    <div class="header-bottom"><!--header-bottom-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="mainmenu pull-left">
+                        <ul class="nav navbar-nav collapse navbar-collapse">
+                            <li><a href="{{ url('homepage') }}" class="active">Home</a></li>
+                            <li class="dropdown"><a>Categories<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    {% for cate in cates %}
+                                        <li><a href="{{ url('categoryproduct',{'id':cate.id}) }}">{{ cate.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="#">Brand<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    {% for brand in brands %}
+                                        <li><a href="{{ url('brandproduct',{'id':brand.id}) }}">{{ brand.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li><a href="{{ url('contactpage') }}">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/header-bottom-->
+    <section id="form"><!--form-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 center-block">
+                    <div class="signup-form"><!--sign up form-->
+                        <h2>Contact us</h2>
+                        {{ form_start(form) }}
+                        {{ form_widget(form.name,{'attr':{'placeholder':'Your Name'}}) }}
+                        {{ form_widget(form.subject,{'attr':{'placeholder':'Your Subject'}}) }}
+                        {{ form_widget(form.messages,{'attr':{'placeholder':'Your Message'}}) }}
+
+                        <div><button type="submit" style="margin-top: 20px" class="btn btn-default">Submit</button></div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/form-->
+{% endblock %}

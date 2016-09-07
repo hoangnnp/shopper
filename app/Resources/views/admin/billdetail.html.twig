@@ -1,0 +1,36 @@
+{% extends 'admin/layoutadmin.html.twig' %}
+{% block admin %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title"> Bill Detail</h3>
+                        </div>
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Image</th>
+                                    <th>Quantity</th>
+                                    <th>Cost</th>
+                                </tr>
+                                {% for detailbill in bill.detailbillss %}
+                                    <tr>
+                                        <td>{{ detailbill.product.name}}</td>
+                                        <td><img style="width: 70px;height: 80px;" src="{{ detailbill.product.images[0].url }}"></td>
+                                        <td>{{ detailbill.quantity }}</td>
+                                        <td>$ {{ detailbill.product.price}}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
+

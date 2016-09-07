@@ -1,0 +1,55 @@
+{% extends 'admin/layoutadmin.html.twig' %}
+{% block admin %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                {{ title }}
+            </h1>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="box box-primary">
+                        {{ form_start(form) }}
+                        <div class="box-body">
+                            <div class="form-group">
+                                {{ form_widget(form.name_vi,{'attr':{'class':'form-control','placeholder':'Vietnamese Name'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.name_en,{'attr':{'class':'form-control','placeholder':'English Name'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.price,{'attr':{'class':'form-control','placeholder':'price'}})}}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.state_en,{'attr':{'class':'form-control','placeholder':'Vietnamese Availability'}})}}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.state_vi,{'attr':{'class':'form-control','placeholder':'English Availability'}})}}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.status_en,{'attr':{'class':'form-control','placeholder':'English Condition'}})}}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.status_vi,{'attr':{'class':'form-control','placeholder':'Vietnamese Condition'}})}}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.category,{'attr':{'class':'form-control','placeholder':'English Condition'}})}}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.brand,{'attr':{'class':'form-control','placeholder':'English Condition'}})}}
+                            </div>
+                            <div class="form-group">
+                                <label style="font-weight: inherit"> Is Featured</label>  {{ form_widget(form.is_feature)}}
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button tyle="margin-right: " type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

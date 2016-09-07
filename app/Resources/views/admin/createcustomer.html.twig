@@ -1,0 +1,40 @@
+{% extends "admin/layoutadmin.html.twig" %}
+{% block admin %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Create User Form
+            </h1>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="box box-primary">
+                        {{ form_start(form) }}
+                        <div class="box-body">
+                            <div class="form-group">
+                                {{ form_widget(form.username,{'attr':{'class':'form-control','placeholder':' username'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.password,{'attr':{'class':'form-control','placeholder':'password'}})}}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.fullname,{'attr':{'class':'form-control','placeholder':'fullname'}})}}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.role,{'attr':{'class':'form-control','placeholder':'role'}})}}
+                            </div>
+                            <div class="form-group">
+                                {{ form_widget(form.url,{'attr':{'class':'form-control','placeholder':'url image'}})}}
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button tyle="margin-right: " type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

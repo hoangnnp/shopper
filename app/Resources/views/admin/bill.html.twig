@@ -1,0 +1,46 @@
+{% extends 'admin/layoutadmin.html.twig' %}
+{% block admin %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">List Product</h3>
+                        </div>
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>Id order</th>
+                                    <th>Username Customer</th>
+                                    <th>Order Cost</th>
+                                    <th>Order State</th>
+                                    <th>Order Date</th>
+                                    <th>Action</th>
+                                </tr>
+                                {% for bill in bill %}
+                                    <tr>
+                                        <td>{{ bill.id }}</td>
+                                        <td>{{ bill.user.username }}</td>
+                                        <td>$ {{ bill.ordercost}}</td>
+                                        <td>{{ bill.orderstate}}</td>
+                                        <td>{{ bill.orderdate|date('m/d/y')}}</td>
+                                        <td>
+                                            <a class="btn btn-success" href="{{ url('billeditproduct',{'id':bill.id}) }}">Edit State</a>
+                                            <a class="btn btn-danger" href="{{ url('billdetailproduct',{'id':bill.id}) }}"> Detail </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                        <div class="box-footer">
+                            <a href="{{ url('createproductpage') }}" class="btn btn-success">Create</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
+

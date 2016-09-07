@@ -1,0 +1,117 @@
+{% extends "default/layout.html.twig" %}
+{% block content %}
+    <div class="header-middle"><!--header-middle-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="logo pull-left">
+                        <a href="{{ url('homepage') }}"><img src="{{ asset('images/home/logo.png') }}" alt="" /></a>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="shop-menu pull-right">
+                        <ul class="nav navbar-nav">
+                            {% if(isLogin==false) %}
+                                <li><a href="{{ url('loginpage') }}"><i class="fa fa-lock"></i> Login</a></li>
+                            {% else %}
+                                <li><a href="{{ url('profilepage') }}"><i class="fa fa-user"></i> Account</a></li>
+                                <li><a href="{{ url('cartpage') }}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                <li><a href="{{ url('logoutpage') }}"><i class="fa fa-lock"></i> Log Out</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/header-middle-->
+    <div class="header-bottom"><!--header-bottom-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="mainmenu pull-left">
+                        <ul class="nav navbar-nav collapse navbar-collapse">
+                            <li><a href="{{ url('homepage') }}" class="active">Home</a></li>
+                            <li class="dropdown"><a >Categories<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    {% for cate in catess %}
+                                        <li><a href="{{ url('categoryproduct',{'id':cate.id}) }}">{{ cate.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a>Brand<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    {% for brand in brands %}
+                                        <li><a href="{{ url('brandproduct',{'id':brand.id})}}">{{ brand.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li><a href="{{ url('contactpage') }}">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/header-bottom-->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="left-sidebar">
+                        <h2>Category</h2>
+                        <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                            <div class="panel panel-default">
+                                {% for cate in catess %}
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a href="{{ url('categoryproduct',{'id':cate.id}) }}">{{ cate.name }}</a>
+                                        </h4>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div><!--/category-products-->
+                        <div class="brands_products"><!--brands_products-->
+                            <h2>Brands</h2>
+                            <div class="brands-name">
+                                {% for brand in brands %}
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="{{ url('brandproduct',{'id':brand.id}) }}"> <span class="pull-right"></span>{{ brand.name }}</a></li>
+                                    </ul>
+                                {% endfor %}
+                            </div>
+                        </div><!--/brands_products-->
+                    </div>
+                </div>
+                <div class="col-sm-9 padding-right">
+                    <div class="features_items"><!--features_items-->
+                        <h2 class="title text-center">{{ bra.name }}  Items</h2>
+                        {% for product in bra.products %}
+                            <div class="col-sm-4">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <a><img src="{{ product.images[0].url }}" alt="" /> </a>
+                                            <h2>${{ product.price }}</h2>
+                                            <p>{{ product.name }}</p>
+                                            {% if(isLogin==false) %}
+                                                <a href="{{ url('loginpage') }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            {% else %}
+                                                <a href="{{ url('cartproduct',{'id':product.id}) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div><!--features_items-->
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
